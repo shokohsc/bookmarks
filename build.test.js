@@ -15,7 +15,7 @@ const { mockFs, mockFetch, mockCheerioLoad, mockJSDOM, mockReadability } = vi.ho
 
 vi.mock("fs", () => ({ default: mockFs, ...mockFs }))
 vi.mock("node-fetch", () => ({ default: mockFetch }))
-vi.mock("cheerio", () => ({ default: { load: mockCheerioLoad } }))
+vi.mock("cheerio", () => ({ load: mockCheerioLoad }))
 vi.mock("jsdom", () => ({ JSDOM: mockJSDOM }))
 vi.mock("@mozilla/readability", () => ({ Readability: mockReadability }))
 

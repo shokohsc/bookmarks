@@ -2,7 +2,7 @@ import fs from "fs"
 import fetch from "node-fetch"
 import { JSDOM } from "jsdom"
 import { Readability } from "@mozilla/readability"
-import cheerio from "cheerio"
+import * as cheerio from "cheerio"
 
 import { generateTags } from "./tagger.js"
 
