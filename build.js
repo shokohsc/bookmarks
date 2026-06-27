@@ -10,6 +10,7 @@ const MAX_RESPONSE_SIZE = 1 * 1024 * 1024
 const REQUEST_TIMEOUT_MS = 20000
 const MAX_BOOKMARKS = 5000
 const USER_AGENT = "bookmark-search-bot/1.0"
+const CONCURRENCY = 5
 
 function isPrivateIP(hostname)
 {
@@ -39,10 +40,6 @@ function isPrivateIP(hostname)
   return false
 }
 
-/**
- * Validate that a URL is safe to fetch.
- * Rejects non-HTTP(S) protocols, empty URLs, and potentially malicious patterns.
- */
 function validateUrl(url)
 {
   if (!url || typeof url !== "string")
@@ -121,7 +118,7 @@ async function extractContent(url)
   if (!validation.valid)
   {
     console.warn(`[WARN] Skipping invalid URL "${url}": ${validation.reason}`)
-    return ""
+    return { content: "", error: validation.reason }
   }
 
   const safeUrl = validation.url
@@ -150,25 +147,25 @@ async function extractContent(url)
         if (!redirectValidation.valid)
         {
           console.warn(`[WARN] Redirect target blocked: ${location} - ${redirectValidation.reason}`)
-          return ""
+          return { content: "", error: `Redirect target blocked: ${redirectValidation.reason}` }
         }
         return extractContent(redirectValidation.url)
       }
       console.warn(`[WARN] Redirect with no Location header from ${safeUrl}`)
-      return ""
+      return { content: "", error: "Redirect with no Location header" }
     }
 
     if (!res.ok)
     {
       console.warn(`[WARN] HTTP ${res.status} for ${safeUrl}`)
-      return ""
+      return { content: "", error: `HTTP ${res.status}` }
     }
 
     const contentType = res.headers.get("content-type") || ""
     if (!contentType.includes("text/html") && !contentType.includes("application/xhtml+xml"))
     {
       console.warn(`[WARN] Skipping non-HTML content (${contentType}) for ${safeUrl}`)
-      return ""
+      return { content: "", error: null }
     }
 
     let body
@@ -196,20 +193,41 @@ async function extractContent(url)
     const reader_ = new Readability(dom.window.document)
     const article = reader_.parse()
 
-    return article?.textContent || ""
+    return { content: article?.textContent || "", error: null }
   }
   catch (err)
   {
     if (err.name === "AbortError")
     {
       console.warn(`[WARN] Request timed out after ${REQUEST_TIMEOUT_MS}ms for ${safeUrl}`)
+      return { content: "", error: "Timeout" }
     }
     else
     {
       console.error(`[ERROR] Failed to fetch ${safeUrl}: ${err.message}`)
+      return { content: "", error: err.message }
     }
-    return ""
   }
+}
+
+async function pMap(items, fn, concurrency)
+{
+  const results = new Array(items.length)
+  let next = 0
+  const workers = []
+  const count = Math.min(concurrency, items.length)
+  for (let i = 0; i < count; i++)
+  {
+    workers.push((async () => {
+      while (next < items.length)
+      {
+        const idx = next++
+        results[idx] = await fn(items[idx])
+      }
+    })())
+  }
+  await Promise.all(workers)
+  return results
 }
 
 async function build()
@@ -220,25 +238,54 @@ async function build()
     const bookmarks = parseBookmarks()
     console.log(`Found ${bookmarks.length} bookmarks`)
 
-    const index = []
-
-    for (const b of bookmarks)
+    const indexFile = "docs/index.json"
+    const existing = new Map()
+    if (fs.existsSync(indexFile))
     {
+      const data = JSON.parse(fs.readFileSync(indexFile, "utf8"))
+      for (const entry of data)
+      {
+        existing.set(entry.url, entry)
+      }
+      console.log(`Loaded ${existing.size} existing entries from ${indexFile}`)
+    }
+
+    const failures = []
+    const seen = new Set()
+
+    const results = await pMap(bookmarks, async (b) => {
+      const existingEntry = existing.get(b.url)
+      if (existingEntry)
+      {
+        existingEntry.title = b.title
+        seen.add(b.url)
+        return null
+      }
+
       console.log(`Fetching: ${b.url}`)
-      const content = await extractContent(b.url)
+      const { content, error } = await extractContent(b.url)
+
+      if (error)
+      {
+        failures.push({ url: b.url, title: b.title, error })
+      }
 
       const ai = generateTags(content)
+      seen.add(b.url)
 
-      index.push({
+      return {
         title: b.title,
         url: b.url,
         category: ai.category,
         tags: ai.tags,
         content: content.slice(0, 500)
-      })
-    }
+      }
+    }, CONCURRENCY)
 
-    // Ensure docs directory exists
+    const existingInOrder = Array.from(existing.values()).filter(e => seen.has(e.url))
+    const newEntries = results.filter(r => r !== null)
+    const index = [...existingInOrder, ...newEntries]
+
     const dir = "docs"
     if (!fs.existsSync(dir))
     {
@@ -250,7 +297,24 @@ async function build()
       JSON.stringify(index, null, 2)
     )
 
-    console.log(`Build complete. Wrote ${index.length} entries to ${dir}/index.json`)
+    console.log(`Build complete. ${index.length} entries (${existingInOrder.length} cached, ${newEntries.length} new)`)
+
+    if (failures.length > 0)
+    {
+      console.log(`\n=== FAILED URLs (${failures.length}) ===`)
+      for (const f of failures)
+      {
+        console.log(`  ${f.title}: ${f.url} (${f.error})`)
+      }
+
+      const failuresPath = `${dir}/failures.json`
+      fs.writeFileSync(failuresPath, JSON.stringify(failures, null, 2))
+      console.log(`\nFull failure report written to ${failuresPath}`)
+    }
+    else
+    {
+      console.log("All URLs fetched successfully.")
+    }
   }
   catch (err)
   {
@@ -259,7 +323,7 @@ async function build()
   }
 }
 
-export { validateUrl, parseBookmarks, extractContent, build, isPrivateIP }
+export { validateUrl, parseBookmarks, extractContent, build, isPrivateIP, pMap }
 
 if (process.argv[1]?.endsWith("build.js"))
 {

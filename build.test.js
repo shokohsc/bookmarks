@@ -278,17 +278,20 @@ describe("extractContent", () => {
     })
 
     const result = await extractContent("https://example.com")
-    expect(result).toBe("Hello World")
+    expect(result.content).toBe("Hello World")
+    expect(result.error).toBeNull()
   })
 
   it("returns empty for invalid URL", async () => {
     const result = await extractContent("not a url")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBeTruthy()
   })
 
   it("returns empty for private URL", async () => {
     const result = await extractContent("http://192.168.1.1")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBeTruthy()
   })
 
   it("returns empty for HTTP error", async () => {
@@ -300,7 +303,8 @@ describe("extractContent", () => {
     })
 
     const result = await extractContent("https://example.com/404")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBe("HTTP 404")
   })
 
   it("follows valid redirect", async () => {
@@ -324,7 +328,8 @@ describe("extractContent", () => {
     })
 
     const result = await extractContent("https://example.com")
-    expect(result).toBe("Redirected")
+    expect(result.content).toBe("Redirected")
+    expect(result.error).toBeNull()
     expect(callCount).toBe(2)
   })
 
@@ -339,7 +344,8 @@ describe("extractContent", () => {
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
 
     const result = await extractContent("https://example.com")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBeTruthy()
 
     warnSpy.mockRestore()
   })
@@ -355,7 +361,8 @@ describe("extractContent", () => {
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
 
     const result = await extractContent("https://example.com")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBe("Redirect with no Location header")
 
     warnSpy.mockRestore()
   })
@@ -371,7 +378,8 @@ describe("extractContent", () => {
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
 
     const result = await extractContent("https://example.com/file.pdf")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBeNull()
 
     warnSpy.mockRestore()
   })
@@ -382,7 +390,8 @@ describe("extractContent", () => {
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {})
 
     const result = await extractContent("https://example.com")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBeTruthy()
 
     errorSpy.mockRestore()
   })
@@ -395,7 +404,8 @@ describe("extractContent", () => {
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
 
     const result = await extractContent("https://example.com")
-    expect(result).toBe("")
+    expect(result.content).toBe("")
+    expect(result.error).toBe("Timeout")
 
     warnSpy.mockRestore()
   })
@@ -417,7 +427,8 @@ describe("extractContent", () => {
     })
 
     const result = await extractContent("https://example.com")
-    expect(result).toBe("truncated")
+    expect(result.content).toBe("truncated")
+    expect(result.error).toBeNull()
 
     warnSpy.mockRestore()
   })
@@ -429,7 +440,14 @@ describe("build", () => {
   })
 
   it("completes build successfully with bookmarks", async () => {
-    mockFs.readFileSync.mockReturnValue("<html><body></body></html>")
+    mockFs.readFileSync.mockImplementation((path) => {
+      if (path === "bookmarks.html") return "<html><body></body></html>"
+      return ""
+    })
+    mockFs.existsSync.mockImplementation((path) => {
+      if (path === "docs/index.json") return false
+      return true
+    })
 
     const elements = [
       { text: () => "Example", attr: (name) => name === "href" ? "https://example.com" : null }
@@ -459,7 +477,6 @@ describe("build", () => {
     mockReadability.mockImplementation(function() {
       return { parse: () => ({ textContent: "Hello content" }) }
     })
-    mockFs.existsSync.mockReturnValue(true)
 
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})

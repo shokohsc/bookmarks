@@ -2,7 +2,7 @@
 
 ## Build pipeline (two phases)
 
-1. `node build.js` — reads `bookmarks.html`, parses `<a>` links, fetches each URL (20s timeout, 1MB limit), extracts readable content via `@mozilla/readability`, generates tags via `tagger.js`, writes `docs/index.json`
+1. `node build.js` — reads `bookmarks.html`, parses `<a>` links, fetches URLs concurrently (5 at a time, 20s timeout, 1MB limit), extracts readable content via `@mozilla/readability`, generates tags via `tagger.js`, writes `docs/index.json`; also produces `docs/failures.json` if any URLs failed
 2. `vite build` — bundles `src/main.js` + `src/style.css` into `docs/` with `base: "./"` for relative asset paths
 
 `npm run build` runs both phases in sequence.
@@ -22,9 +22,17 @@
 - `emptyOutDir: false` — preserves `docs/index.json` during Vite builds (data is generated separately)
 - `base: "./"` — ensures built asset paths work from subdirectories and file://
 
+## Incremental builds
+
+`build.js` reads existing `docs/index.json` (if present) and skips re-fetching URLs that already have entries. Only new URLs are fetched. Entries removed from `bookmarks.html` are cleaned out of the index. Existing entries have their titles updated from the bookmarks file.
+
+## Failure reporting
+
+When a URL fails to fetch (timeout, HTTP error, network error, invalid URL, etc.), the error is collected. After the build completes, a summary of all failures is printed to the console and written to `docs/failures.json` for manual review.
+
 ## Testing
 
-- `npm test` — vitest, runs all 3 test files (76 tests). Functional tests start a real Vite dev server.
+- `npm test` — vitest, runs all 3 test files (52 build tests, 4 functional tests, 20 tagger tests). Functional tests start a real Vite dev server.
 - `npm run test:coverage` — covers only `build.js` and `tagger.js` (excludes built assets and src/)
 - Functional tests (`functional.test.js`) use 30s hook timeout — Vite `createServer` startup is slow
 - Unit tests mock `fs`, `node-fetch`, `cheerio`, `jsdom`, `@mozilla/readability` via `vi.mock`
@@ -33,7 +41,7 @@
 
 | File | Role |
 |------|------|
-| `build.js` | Data pipeline: parse bookmarks.html, fetch URLs, extract content, write index.json |
+| `build.js` | Data pipeline: parse bookmarks.html, fetch URLs (5 concurrent), extract content, incremental builds, write index.json + failures.json |
 | `tagger.js` | Frequency-based keyword extraction (top 10 terms, filters stopwords + words <4 chars) |
 | `src/main.js` | Frontend entry: fetches index.json, 150ms debounced search against title/url/tags/content |
 | `src/style.css` | Dark theme (#1a1a2e bg, #16213e cards, #e94560 accent) |
