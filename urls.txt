@@ -1,3 +1,6 @@
+https://github.com/Fission-AI/OpenSpec
+https://github.com/HKUDS/Vibe-Trading
+https://github.com/bikini/exploitarium
 https://github.com/kunchenguid/no-mistakes
 https://github.com/commaai/openpilot
 https://github.com/Light-Heart-Labs/DreamServer
@@ -419,7 +422,6 @@ https://github.com/MacRimi/ProxMenux
 https://pandoc.org/app/
 https://www.appcontrol.com/
 https://github.com/dimartarmizi/web-flight-simulator
-https://github.com/eigenpal/docx-js-editor
 https://github.com/browserwing/browserwing
 https://github.com/danielmiessler/Personal_AI_Infrastructure
 https://github.com/viarotel-org/escrcpy
@@ -477,7 +479,6 @@ https://github.com/llnl/OGhidra
 https://github.com/sunnypatell/netdash-toolkit
 https://martybugs.net/wireless/openwrt/quagga.cgi
 https://docs.daper.io/networking/bgp/openwrt/index.html
-https://docs.cilium.io/en/stable/network/bgp-control-plane/
 https://docs.cilium.io/en/v1.13/network/kubernetes/kubeproxy-free/#client-source-ip-preservation
 https://isovalent.com/blog/post/cilium-release-112/
 https://docs.cilium.io/en/v1.13/network/servicemesh/ingress/#gs-ingress
@@ -488,7 +489,6 @@ https://github.com/Daniel31x13/link-warden
 https://github.com/ndom91/briefkasten
 https://www.xbrowsersync.org/#services
 https://hub.docker.com/r/kasmweb/core-kali-rolling
-https://github.com/kasmtech/workspaces-images/issues/16#issuecomment-1187711415
 https://hub.docker.com/u/kasmweb
 https://www.reddit.com/r/selfhosted/comments/o6zmal/kasm_workspaces_container_streaming_platform/
 https://socket.io/docs/v4/client-initialization/
@@ -507,11 +507,9 @@ https://docs.aws.amazon.com/cli/latest/reference/service-quotas/get-service-quot
 https://docs.aws.amazon.com/cli/latest/reference/service-quotas/get-aws-default-service-quota.html
 https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/
 https://github.com/aws-samples/flux-eks-gitops-config#managing-configuration-of-amazon-eks-clusters-per-environment-with-gitops-using-flux
-https://play.google.com/store/apps/details?id=com.droidhen.idlechess&hl=fr&gl=US
 https://threejs.org/
 https://pixijs.com/
 https://moleculer.services/docs/0.14/events.html
-https://github.com/shokohsc-team/sidekick/tree/gacha
 https://www.diablotimer.com/
 https://www.ginx.tv/en/diablo/diablo-immortal-world-map-regions-areas
 https://www.rockpapershotgun.com/diablo-immortal-legendary-set-gear
@@ -531,7 +529,6 @@ https://www.purewow.com/recipes/tofu-banh-mi
 https://www.thekitchn.com/recipe-smoky-sweet-potato-amp-black-bean-casserole-239326
 https://smittenkitchen.com/2010/04/shakshuka/
 https://www.simplylakita.com/sweet-potato-miso-soup/
-https://kubernetes-client.github.io/javascript/classes/customobjectsapi.customobjectsapi-1.html#listclustercustomobject
 https://www.botkube.io/configuration/
 https://www.npmjs.com/package/puppeteer-core
 https://www.npmjs.com/package/@opentelemetry/exporter-prometheus
@@ -575,9 +572,7 @@ https://docs.gitea.io/en-us/
 https://gitea.com/gitea/helm-chart
 https://artifacthub.io/packages/helm/gitea/gitea
 https://vector.dev/docs/reference/configuration/transforms/log_to_metric/
-https://pastebin.com/ZSurG3Vm
 https://vector.dev/docs/reference/configuration/sources/prometheus_scrape/
-https://timber.io/blog/promql-for-humans/
 https://artifacthub.io/packages/helm/prometheus-community/prometheus?modal=values&path=extraScrapeConfigs
 https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#service-upstream
@@ -590,19 +585,15 @@ https://www.haproxy.com/fr/blog/protect-servers-with-haproxy-connection-limits-a
 https://haproxy-ingress.github.io/docs/configuration/keys/#keys
 https://www.haproxy.com/fr/blog/autoscaling-with-the-haproxy-kubernetes-ingress-controller-and-keda/
 https://keda.sh/blog/2021-06-24-announcing-http-add-on/
-https://blog.filador.fr/mettre-a-lechelle-facilement-sur-kubernetes-avec-keda/
 https://keda.sh/docs/2.2/scalers/prometheus/
 https://dev.to/k6/how-to-autoscale-kubernetes-pods-with-keda-testing-with-k6-4nl9
-https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-
 https://hub.docker.com/r/openspeedtest/latest
 https://planka.app/
 https://hub.docker.com/r/restyaplatform/restyaboard/
-https://github.com/wekan/wekan/tree/master/helm/wekan
 https://toolkit.fluxcd.io/guides/mozilla-sops/
 https://github.com/mozilla/sops#adding-and-removing-keys
 https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification
 https://dev.to/stack-labs/manage-your-secrets-in-git-with-sops-for-kubernetes-57me
-https://www.devdungeon.com/content/gpg-tutorial
 https://www.techrepublic.com/article/how-to-create-and-export-a-gpg-keypair-on-macos/
 https://github.com/emberstack/kubernetes-reflector
 https://medium.com/@aimvec/secret-management-on-kubernetes-with-vault-9cafd909db00
@@ -634,7 +625,6 @@ https://github.com/stashed/stash
 https://medium.com/soluto-engineering/practical-canary-releases-in-kubernetes-with-argo-rollouts-933884133aea
 https://medium.com/@poom.wettayakorn/gitops-in-kubernetes-with-gitlab-ci-and-argocd-9e20b5d3b55b
 https://www.twitch.tv/videos/716089280
-https://argoproj.github.io/argo-cd/user-guide/tracking_strategies/#head-branch-tracking
 https://github.com/viaduct-ai/kustomize-sops
 https://github.com/argoproj/argo-cd/issues/2953
 https://medium.com/@irisaltman/how-to-change-your-kubernetes-deployment-file-dynamically-using-kustomize-eef1d60acec8
@@ -766,7 +756,6 @@ https://gist.github.com/shokohsc/76fc712fbfb2d62175a9a8c4e0d2440c
 https://github.com/k8s-at-home/charts/blob/master/charts/stable/tdarr/values.yaml
 https://tdarr.io/docs/installation/docker
 https://hub.docker.com/r/jlesage/handbrake
-https://hub.docker.com/r/foncekar/docker-chromecastize
 https://github.com/UnicornTranscoder
 https://github.com/pstauffer/docker-inotify/blob/master/init.sh
 https://hub.docker.com/r/pstauffer/inotify
@@ -781,7 +770,6 @@ https://kauri.io/58-selfhost-your-media-center-on-kubernetes-with-p/8ec7c8c6bf4e
 https://github.com/tellytv/telly
 https://forums.plex.tv/t/tv-series-season-folder-with-more-than-100-episodes-in-it/80932/10
 https://support.plex.tv/articles/201543147-what-network-ports-do-i-need-to-allow-through-my-firewall/
-https://forums.plex.tv/t/docker-setup-question-ports-vs-host/277288
 https://forums.plex.tv/t/chromecast-ultra-and-2nd-gen-error-code-h4-not-supported/556185
 https://github.com/munnerz/kube-plex
 https://github.com/Unicorn-K8s/UnicornTrancoder-chart
@@ -797,12 +785,10 @@ https://thenewstack.io/introduction-to-go-programming-language/
 https://www.geeksforgeeks.org/100-days-of-golang/
 https://docs.docker.com/language/golang/develop/
 https://ankorstore.github.io/yokai/
-https://go-zero.dev/en/docs/concepts/overview
 https://github.com/go-gorm/gorm/issues/1978
 https://techwasti.com/how-to-use-enums-with-gorm#heading-option-3-using-gorms-enums
 https://medium.com/@celalsahinaltinisik/rabbitmq-publish-consume-with-golang-26412784b6e5
 https://github.com/gofiber/fiber/issues/253
-https://gin-gonic.com/docs/quickstart/
 https://dev.to/percoguru/getting-started-with-apis-in-golang-feat-fiber-and-gorm-2n34
 https://gorm.io/index.html
 https://docs.gofiber.io
@@ -830,9 +816,7 @@ https://github.com/shokohsc/cloud-torrent
 https://serverfault.com/questions/1018769/is-it-possible-to-have-a-failover-backup-docker-registry
 https://github.com/goharbor/harbor
 https://medium.com/@jodywan/running-harbor-2-0-docker-with-http-behind-a-https-traefik-2-0-reverse-proxy-4f9b7abaf151
-https://www.kubeval.com/installation/
 https://repl.it
-https://www.aristotlemetadata.com/blog/2020/08/first-impressions-github-codespaces.html
 https://dev.to/zaiste/15-command-line-tools-to-make-you-better-at-shell-cli-35n6
 https://opensource.com/article/20/6/modern-linux-command-line-tools
 https://itnext.io/terminal-101-the-setup-guide-that-will-boost-your-workflow-12df2570052
@@ -874,14 +858,12 @@ https://medium.com/javascript-in-plain-english/how-to-build-speech-recognition-i
 https://www.fullstackpython.com/blog/transcribe-recordings-speech-text-assemblyai.html
 https://rhasspy.readthedocs.io/en/latest/speech-to-text/
 https://jackaudio.org/
-https://github.com/shokohsc/transcribe4all
 https://cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-gettingStarted#getting-started-tutorial
 https://www.ofoct.com/audio-converter/audio-to-text.html
 https://sonix.ai/best-mp3-to-text-converter
 https://www.happyscribe.co/
 https://ffmpeg.org/documentation.html
 https://github.com/hack4impact/transcribe4all
-http://shokohsc.github.io/
 http://docs.rxresu.me/
 http://otranscribe.com/
 http://zanata.org/
@@ -889,15 +871,11 @@ https://support.cloudflare.com/hc/en-us/articles/200168876
 https://www.wpoven.com/blog/free-smtp-servers-sending-emails/
 https://github.com/Mailu/Mailu/tree/master/core/dovecot
 https://github.com/Mailu/Mailu/tree/master/core/postfix
-https://nodemailer.com/extras/smtp-connection/
 https://doc.dovecot.org/admin_manual/doveadm_mailbox_commands/
-https://wiki.dovecot.org/Tools/Doveadm/Mailbox
 https://blog.suenotek.com/post/mail-server-with-postfix-dovecot-and-virtual-users-on-ubuntu-20-04/
-https://wiki2.dovecot.org/HowTo/DovecotPostgresql
 https://www.npmjs.com/package/dmarc-solution
 https://www.npmjs.com/package/dkim
 https://support.google.com/a/answer/10032473?hl=fr&ref_topic=2759254
-https://github.com/al66/imicros-mails
 https://www.c0ffee.net/img/mail_server_diagram.svg
 https://simonjcarr.medium.com/create-an-smtp-server-with-nodejs-5688d8fd882e
 https://blog.forcesunseen.com/email-blame
@@ -907,7 +885,6 @@ https://zackorndorff.com/2015/03/10/disposable-email-addresses-with-postfix/
 https://medium.com/sroze/installation-dun-serveur-mail-smtp-postfix-avec-postgresql-sous-centos-3a720dd021e5
 https://registry.hub.docker.com/_/postfixadmin
 https://registry.hub.docker.com/r/webdevops/postfix
-https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/postfix.html
 https://whimsical.com/anonaddy-JeDjma488tcFLiAHHKNtrZ
 https://github.com/anonaddy/docker/blob/master/Dockerfile
 https://github.com/anonaddy/anonaddy/blob/master/.env.example
@@ -954,10 +931,7 @@ https://www.reddit.com/r/docker/comments/cl9qut/hardwareagnostic_way_to_run_gpua
 https://hub.docker.com/r/guenterbailey/amdgpu/
 https://youtu.be/L4nqky8qGm8
 https://github.com/shokohsc/turbo-lamp
-https://kubernetes.github.io/ingress-nginx/user-guide/third-party-addons/opentracing/
-https://github.com/openzipkin/zipkin/blob/master/charts/zipkin/templates/deployment.yaml#L50
 https://moleculer.services/docs/0.14/tracing.html#Zipkin
-https://docs.dapr.io/operations/monitoring/tracing/supported-tracing-backends/zipkin/
 https://www.jaegertracing.io/
 https://opentracing.io/docs/overview/what-is-tracing/
 https://microservices.io/patterns/observability/distributed-tracing.html
@@ -1007,7 +981,6 @@ https://blog.baeke.info/2019/08/28/the-basics-of-meshing-traefik-2-0-with-linker
 https://medium.com/@deep75/mise-en-oeuvre-dun-service-mesh-avec-microstack-linkerd-2-x-et-k3s-23242310246c
 https://www.devopsfu.com/2020/01/17/automating-linkerd-installation-in-terraform/
 https://linkerd.io/
-http://feedproxy.google.com/~r/cowcotland/~3/1Ya1SxzbwEs/jonsbo-v10-un-nouveau-boitier-mini-itx-compact-qui-va-a-l-essentiel.html
 https://www.comptoir-hardware.com/actus/boitiers-barebones/42303-modding-un-build-minimaliste-dans-un-formd-t1-cest-possible-.html
 https://www.csfg.io/
 https://www.reddit.com/gallery/ijmwf2
@@ -1039,7 +1012,6 @@ https://www.terraform.io/docs/providers/kubernetes/index.html
 https://www.terraform.io/docs/configuration/providers.html#third-party-plugins
 https://www.terraform.io/docs/provisioners/local-exec.html
 https://github.com/banzaicloud/terraform-provider-k8s
-https://github.com/terraform-providers/terraform-provider-kubernetes/issues/141
 https://app.terraform.io/app/shokohsc/workspaces/kind/runs
 https://app.terraform.io/app/getting-started/menu
 https://app.terraform.io/app/getting-started/intro
@@ -1050,7 +1022,6 @@ https://www.linode.com/docs/applications/configuration-management/terraform/secr
 https://data.heroku.com/
 https://dashboard.heroku.com/apps
 https://medium.com/@meson10/remote-terraform-state-server-47c481983268
-https://elements.heroku.com/buttons/ianwremmel/terraform-state-server
 https://www.terraform.io/docs/configuration/variables.html
 https://www.terraform.io/docs/backends/types/http.html
 https://www.terraform.io/docs/backends/types/remote.html
@@ -1074,14 +1045,12 @@ https://corosync.github.io/corosync/
 https://peteris.rocks/blog/nfs4-single-port/
 https://opensource.com/article/20/6/kubernetes-nfs-client-provisioning
 https://blog.heptio.com/configuring-your-linux-host-to-resolve-a-local-kubernetes-clusters-service-urls-a8c7bdb212a7
-https://github.com/Tristan971/kube-enable-coredns-on-node
 https://github.com/kubernetes/minikube/issues/3417#issuecomment-493366877
 https://medium.com/@aronasorman/creating-an-nfs-server-within-kubernetes-e6d4d542bbb9
 https://help.ubuntu.com/community/NFSv4Howto
 https://ubuntu.com/server/docs/service-nfs
 https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-centos-8/
 https://medium.com/@myte/kubernetes-nfs-and-dynamic-nfs-provisioning-97e2afb8b4a9
-https://blog.exxactcorp.com/deploying-dynamic-nfs-provisioning-in-kubernetes/
 https://github.com/gmrukwa/docker-nfs-server
 https://hub.docker.com/r/twhtanghk/nfs-ganesha/
 https://hub.docker.com/r/mitcdh/nfs-ganesha/
@@ -1092,24 +1061,18 @@ https://github.com/sjiveson/nfs-server-alpine
 https://github.com/f-u-z-z-l-e/docker-nfs-server
 https://github.com/ehough/docker-nfs-server
 https://linuxconfig.org/how-to-set-up-a-nfs-server-on-debian-10-buster
-https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs
 https://matthewpalmer.net/kubernetes-app-developer/articles/kubernetes-volumes-example-nfs-persistent-volume.html
 https://github.com/boot2docker/boot2docker/issues/1262
 https://www.padok.fr/blog/volumes-persistants-nfs-kubernetes
 https://stackoverflow.com/questions/55120399/kubernetes-creating-empty-directories-on-nfs
-https://github.com/kubernetes/examples/blob/master/staging/volumes/nfs/nfs-server-rc.yaml
 https://kubernetes.io/docs/concepts/storage/storage-classes/
-https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
 https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
 https://kubernetes.io/docs/concepts/storage/volumes/#local
 https://stackoverflow.com/questions/57008103/copying-files-from-docker-volume-to-kubernetes-volume
 https://kind.sigs.k8s.io/docs/user/quick-start/#advanced
-https://docs.syseleven.de/metakube/en/tutorials/read-write-many-volumes
-https://hub.docker.com/r/remnux/cyberchef
 https://gchq.github.io/CyberChef/
 https://hub.docker.com/r/rlister/hastebin/
 https://hastebin.com/about.md
-https://github.com/seejohnrun/haste-server
 https://korben.info/avoir-flux-rss-site-web.html
 https://github.com/lzeke0/TwitchRSS
 https://github.com/RSS-Bridge/rss-bridge
@@ -1136,7 +1099,6 @@ https://edimax.freshdesk.com/support/solutions/articles/14000065859-how-to-insta
 https://support.parsecgaming.com/hc/en-us/articles/360001562772-All-Advanced-Configuration-Options
 https://support.parsecgaming.com/hc/en-us/articles/360003146471-Audio-Buffer-Setting
 https://support.parsecgaming.com/hc/en-us/articles/360040986092-Increase-Your-Audio-Bitrate
-https://github.com/shokohsc/server-wol
 https://www.minecraft-france.fr/
 https://codeburst.io/run-a-minecraft-server-for-free-on-kubernetes-ac82a892969e
 https://www.reddit.com/r/golang/comments/ideg2v/gate_the_extensible_minecraft_proxy_written_in_go/
@@ -1152,15 +1114,12 @@ https://agones.dev/site/
 https://itnext.io/how-to-build-real-time-notification-service-using-server-sent-events-sse-5ffd9e27304f
 https://pterodactyl.io/
 https://drash.land/drash/#/introduction#quickstart
-https://blog.giantswarm.io/container-image-building-with-kaniko/
 https://www.docker.com/blog/multi-arch-build-what-about-travis/
 https://medium.com/@chrisedrego/20-best-practise-in-2020-for-dockerfile-bb04104bffb6
-https://github.com/shokohsc/see-eye
 https://medium.com/@yash.kukreja.98/multi-cpu-architecture-builds-with-docker-understanding-docker-manifest-lists-177060dd8bfa
 https://medium.com/better-programming/improve-mongodb-performance-using-projection-c08c38334269
 https://www.mongodb.com/blog/post/import-export-your-data-with-compass
 https://konghq.com/blog/canary-deployment-5-minutes-service-mesh/
-https://github.com/Kong/kuma
 https://vite-pwa-org.netlify.app/guide/
 https://ionicframework.com/docs/vue/pwa
 https://bitrock.it/blog/technology/how-we-built-an-app-with-qwik-supabase-and-vercel.html
@@ -1234,7 +1193,6 @@ https://forum.vuejs.org/t/file-management-system-with-vue-router/70985
 https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-breadcrumbs.php
 https://medium.com/@pratheekhegde/displaying-application-breadcrumbs-in-vue-js-85456dc8a370
 https://medium.com/@fagnersaraujo/automated-breadcrumbs-with-vuejs-7e1051de8028
-https://www.wired.com/2010/02/build_dynamic_breadcrumbs_with_javascript/
 https://vuejs.org/
 https://css-tricks.com/a-lightweight-masonry-solution/
 https://masonry.desandro.com/
@@ -1254,7 +1212,6 @@ https://api.gouv.fr/
 https://cyberhost.uk/cloudflare-argo-tunnel/
 https://dev.to/saschb2b/a-cryptocurrency-trading-bot-that-doesn-t-scam-you-51en
 https://www.20minutes.fr/arts-stars/culture/2866999-20200922-appel-cthulhu-mangaka-gou-tanabe-adapte-inadaptable-lovecraft#xtor=RSS-149
-https://towardsdatascience.com/high-availability-mysql-cluster-with-load-balancing-using-haproxy-and-heartbeat-40a16e134691
 https://towardsdatascience.com/d3-js-how-to-make-a-beautiful-bar-chart-with-the-most-powerful-visualization-library-9bea4e00349a
 https://medium.com/@julianrunnels/setting-up-a-private-password-vault-in-5-minutes-with-docker-313d76374046
 https://reddit.com/comments/ilfc03
@@ -1323,7 +1280,6 @@ https://kite.com/
 https://www.reddit.com/r/kubernetes/comments/cm9ls4/twoway_sync_of_source_code_on_skaffold/
 https://devspace.sh/
 https://medium.com/hackernoon/node-js-development-with-skaffold-file-sync-99c687b906d5
-https://github.com/tarvainen/symfony-k8s-skaffold-demo
 https://pre-commit.com/
 https://codefresh.io/kubernetes-tutorial/okteto/
 https://medium.com/python-for-the-utopian/skaffold-is-a-kool-k8s-tool-b7633604c324
@@ -1350,7 +1306,6 @@ https://www.augmentedmind.de/2021/07/25/renovate-bot-cheat-sheet/
 https://docs.renovatebot.com/modules/manager/kustomize/
 https://github.com/docker/for-mac/issues/4100#issuecomment-648491451
 https://skaffold.dev/docs/pipeline-stages/builders/docker/#dockerfile-in-cluster-with-kaniko
-https://skaffold.dev/docs/pipeline-stages/builders/#in-cluster-build
 https://webhookrelay.com
 https://keel.sh
 https://github.blog/2020-09-30-code-scanning-is-now-available/
@@ -1383,7 +1338,6 @@ https://github.com/stefanprodan/gitops-istio
 https://www.spinnaker.io/
 https://dev.to/schoren/create-container-images-with-bazel-47am
 https://docs.bazel.build/versions/master/bazel-overview.html
-https://anthonykgross.fr/p/deploiement-continu-docker-gitlab-rancher
 https://www.padok.fr/en/blog/test-environments-gitlab-kubernetes
 https://medium.com/@abenahmed1/pipeline-de-ci-cd-simplifi%C3%A9-dans-un-cluster-kubernetes-avec-gitlab-et-rancher-602a01029bae
 https://thecodingmachine.io/continuous-delivery-on-a-dedicated-server
@@ -1436,7 +1390,6 @@ http://www.addic7ed.com/
 https://www.betaseries.com/calendrier
 https://www.youtube.com/feed/subscriptions
 https://www.renover-malin.fr/aides-financieres/aides-aux-particuliers/
-https://www.parc-gatinais-francais.fr/service-daccompagnement-a-la-renovation-energetique-du-parc/
 https://www.service.eau.veolia.fr/home/espace-client.html#inside-space
 https://www.prime-energie-edf.fr/mon-espace.html
 https://flowcv.io/
@@ -1497,7 +1450,6 @@ https://github.com/Maciejonos/qbitwebui
 https://github.com/V1ck3s/octo-fiesta
 https://github.com/bcherb2/ffdash
 https://github.com/Doezer/Questarr
-https://github.com/poly-mcp/Polymcp
 https://github.com/terry90/soulbeet
 https://github.com/VikingOwl91/vessel
 https://github.com/jnsahaj/lumen
@@ -1517,7 +1469,6 @@ https://github.com/safebucket/safebucket
 https://github.com/miscusi-peek/cheatengine-mcp-bridge
 https://dzone.com/articles/expose-mcp-server-as-web-api
 https://github.com/BlessedRebuS/Krawl
-https://github.com/stan-smith/FossFLOW
 https://github.com/reugn/github-ci
 https://github.com/ericsharma/city-gifs
 https://github.com/semonte/sisu
@@ -1594,7 +1545,6 @@ https://datarecrutement.fr/offres/?cat=infra_admin_system_sre_devops
 https://easypartner.fr/les-jobs-sont-la/?f_skills[]=kubernetes
 https://lity.so/jobs/
 https://caraz.io/nos-offres?technos%5B%5D=16
-https://pasteque.io/offres/?_sft_technos=kubernetes&_sfm_salaire=20000+200000
 https://www.seyos.fr/offres/developpeur-java-h-f-2924/?category%5B%5D=infrastructure-cloud&salaire_min=50&date=&mots_cles=kubernetes#resultat
 https://anakine.io/offres-d-emploi-tech/
 https://www.silkhom.com/nos-offres-demploi/#mot-cle=kubernetes
@@ -1604,9 +1554,7 @@ https://www.achil.io/nos-offres-demploi/?job_category=it-tech
 https://candidat.francetravail.fr/offres/recherche?motsCles=kubernetes&offresPartenaires=true&range=0-19&rayon=10&tri=1
 https://hirenet.fr/mypepit-jobboard/infrastructure-1691768469263x726360713882501100
 https://app.licornesociety.com/jobs
-https://jobs.octopusit.fr/jobs?department_id=76039
 https://www.wakeitup.tech/offres/category/infra/
-https://urbanlinker.com/fr/jobs/tech
 https://www.beyondskillsit.com/offres-disponibles
 https://skillhunter.fr/offres-demploi/
 https://unlck.fr/offres-emploi/?_sfm_contract_type=cdi&_sfm_minimum_salary=70+200
@@ -1630,7 +1578,6 @@ https://www.linkedin.com/jobs/search/?f_AL=true&f_JT=F&f_TPR=r86400&f_WT=2&keywo
 https://www.linkedin.com/jobs/search/?f_JT=F&f_TPR=r86400&f_WT=2&geoId=105015875&keywords=kubernetes&location=France&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true&sortBy=R
 https://rxresu.me/dashboard/resumes
 https://www.binance.com/en
-https://www.bitfinex.com/trading
 https://www.tradingview.com/chart/hRi4Cfdb/
 https://bittrex.com/home/markets
 https://www.kraken.com/
@@ -2636,8 +2583,6 @@ https://docs.docker.com/desktop/features/usbip/#step-one-run-a-usbip-server
 https://github.com/GeeeekExplorer/nano-vllm
 https://github.com/beriberikix/usbipd-mac
 https://github.com/jiegec/usbip
-https://github.com/quietui/quiet
-https://github.com/Oliveira3d/free-ip-stresser-booter
 https://github.com/searxng/searxng
 https://github.com/D4rth-C0d3r/bash_logger
 https://github.com/calcom/sans-ui
@@ -2666,7 +2611,6 @@ https://github.com/gorango/flowcraft
 https://github.com/contre95/soulsolid
 https://github.com/damionrashford/RivalSearchMCP
 https://github.com/IliasHad/edit-mind
-https://github.com/cloudcommunity/Free-Certifications
 https://github.com/seaweedfs/seaweedfs
 https://github.com/caster0x00/Sara
 https://github.com/n00bvn/CanvasMCPClient
@@ -2778,7 +2722,6 @@ https://github.com/zoriya/Kyoo
 https://github.com/4rivappa/kube-trace-nfs
 https://github.com/remote-android/redroid-doc
 https://github.com/google/android-cuttlefish
-https://github.com/revenz/FileFlows
 https://github.com/sabpprook/ERSaveIDEditor
 https://github.com/CyberGiant7/Elden-Ring-Automatic-Checklist
 https://github.com/BenGrn/EldenRingSaveCopier
@@ -2981,7 +2924,6 @@ https://github.com/empowerd-cms/nyno
 https://github.com/eznix86/docker-registry-ui
 https://mikrotik.com/product/crs328_24p_4s_rm
 https://github.com/al-sca/yaths
-https://github.com/ben-oswald/valkey_insight
 https://github.com/PixelGuys/Cubyz
 https://github.com/TibixDev/winboat
 https://github.com/winapps-org/winapps
@@ -3008,7 +2950,6 @@ https://github.com/relloyd/tubetimeout
 https://github.com/comictagger/comictagger
 https://github.com/RomanistHere/PopUpOFF
 https://github.com/elder-plinius/CL4R1T4S
-https://github.com/sentrilite/sentrilite
 https://github.com/philippemerle/Awesome-Kubernetes-Architecture-Diagrams
 https://github.com/telman03/gocraft-backend
 https://github.com/sidoshi/karakeep-sync
@@ -3174,7 +3115,6 @@ https://github.com/Ascendara/ascendara
 https://github.com/jaywcjlove/awesome-mac
 https://github.com/Zile995/PinnacleRidge-Polaris-GPU-Passthrough
 https://forum.proxmox.com/threads/gpu-passthrough-not-working-rx580-and-strange-screen-behaviour.126727/
-https://github.com/alvinunreal/anxiety-aid-tools
 https://ollama.com/blog/continue-code-assistant
 https://www.pedroalonso.net/blog/local-ai-assitance-with-continue-ollama-vscode/
 https://medium.com/@rodrigo.estrada/build-a-local-ai-coding-assistant-qwen3-ollama-continue-dev-cee0dbcd172a
@@ -3197,7 +3137,6 @@ https://github.com/andrii-kryvoviaz/slink
 https://github.com/roeldev/iac-talos-cluster
 https://github.com/idosal/git-mcp
 https://github.com/svenstaro/miniserve
-https://github.com/Xoconoch/spotizerr
 https://github.com/iris-networks/terminator
 https://github.com/kanidm/kanidm
 https://www.reddit.com/r/homelab/comments/1mjbx2d/what_is_an_affordable_10gbe25gbe_switch_for_my/
@@ -3342,7 +3281,6 @@ https://github.com/kubernetes-sigs/karpenter
 https://netboot.xyz/docs/kb/pxe/windows/
 https://www.derekseaman.com/2023/04/proxmox-lets-encrypt-ssl-the-easy-button.html
 https://github.com/steveiliop56/tinyauth
-https://github.com/vBlackOut/ProxyAuth
 https://github.com/11notes/docker-kms-gui
 https://github.com/flux-iac/tofu-controller
 https://github.com/visgl/deck.gl
@@ -3409,13 +3347,11 @@ https://der-jd.de/blog/2021/03/22/OpenWRT-router-as-PXE-server/
 https://docs.linuxserver.io/images/docker-netbootxyz/?h=netboo#dnsmasqdd-wrtopenwrttomatopihole
 https://github.com/netbootxyz/docker-netbootxyz/pkgs/container/netbootxyz
 https://netboot.xyz/docs/docker/
-https://techno-tim.github.io/posts/netbootxyz-tutorial/#configuring
 https://cert-manager.io/docs/configuration/acme/dns01/#setting-nameservers-for-dns01-self-check
 https://github.com/Gyanreyer/hover-video-player
 https://www.npmjs.com/package/proper-lockfile
 https://theserverfault.com/adaptive-bitrate-streaming-in-nodejs/
 https://medium.com/@peer5/creating-a-production-ready-multi-bitrate-hls-vod-stream-dff1e2f1612c
-https://github.com/movie-web/movie-web/blob/dev/src/backend/metadata/tmdb.ts#L167
 https://developer.themoviedb.org/reference/search-multi
 https://github.com/grantholle/moviedb-promise?tab=readme-ov-file#complete-function-list
 https://www.npmjs.com/search?q=levenshtein
@@ -3507,7 +3443,6 @@ https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/pihol
 https://benchkram.de/blog/dev/replace-kubernetes-ingress-with-gateway-api
 https://dev.to/chillaranand/local-kubernetes-cluster-with-k3s-on-mac-m1-i57
 https://github.com/ppggff/vagrant-qemu
-https://blog.filador.fr/a-la-decouverte-de-k3s/
 https://dev.to/berviantoleo/setup-kubernetes-development-environment-using-vagrant-and-k3s-1kkh
 https://akos.ma/blog/vagrant-k3s-and-virtualbox/
 https://k33g.gitlab.io/articles/2020-04-18-K3S-10-VAGRANT.html
@@ -3522,7 +3457,6 @@ https://devopstales.github.io/kubernetes/k3s-cilium/
 https://hub.docker.com/r/rancher/k3s/tags
 https://docs.cilium.io/en/v1.13/installation/k3s/
 https://docs.k3s.io/installation/configuration#configuration-file
-https://imapflow.com/module-imapflow-ImapFlow.html#messageDelete
 https://quasar.dev/vue-components/list-and-list-items
 https://resend.com/home
 https://github.com/moleculerjs/moleculer-web/issues/140
@@ -3530,15 +3464,11 @@ https://axios-http.com/docs/multipart
 https://www.bezkoder.com/vue-axios-file-upload/
 https://quasar.dev/vue-components/input
 https://smtpjs.com/
-https://nodemailer.com/extras/mailcomposer/
-https://nodemailer.com/message/
 https://moleculer.services/docs/0.14/moleculer-web.html#File-upload-aliases
 https://github.com/moleculerjs/moleculer-addons/tree/master/packages/moleculer-mail#settings
 https://www.npmjs.com/package/crypto-js
 https://skiff.com/blog/javascript-encryption-decryption-tutorial
 https://whyboobo.com/devops/tutorials/asymmetric-encryption-with-nodejs/
-https://imapflow.com/global.html#SearchObject
-https://imapflow.com/module-imapflow-ImapFlow.html#search
 https://imapflow.com/index.html
 https://www.ikea.com/fr/fr/p/voxnan-barre-avec-douchette-haut-reglable-chrome-70342613/
 https://www.ikea.com/fr/fr/p/raennilen-siphon-pour-1-bac-devier-40422404/
@@ -3567,7 +3497,6 @@ https://docs.cilium.io/en/stable/helm-reference/
 https://github.com/cilium/cilium/releases
 https://yolops.net/k8s-dualstack-cilium.html
 https://dariomader.io/post/how_i_moved_from_metallb_to_cilium/
-https://www.yfdou.com/archives/use-Cilium-to-fully-replace-kube-proxy.html
 https://www.flockport.com/guides/connecting-networks-with-bgp
 https://nicovibert.com/2022/07/21/bgp-with-cilium/
 https://openmaniak.com/fr/quagga_tutorial.php

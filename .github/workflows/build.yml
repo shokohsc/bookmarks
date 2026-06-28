@@ -38,15 +38,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
+      - uses: actions/cache@v6
+        with:
+          path: docs/index.json
+          key: ${{ hashFiles('bookmarks.html') }}
       - run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/
-      - uses: actions/cache@v6
-        with:
-          path: docs/index.json
-          key: ${{ hashFiles('bookmarks.html') }}
       - uses: actions/upload-artifact@v7.0.1
         with:
           name: failures
