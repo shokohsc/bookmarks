@@ -30,23 +30,23 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
-      - uses: actions/download-artifact@v8.0.1
+      - uses: actions/cache@v6
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
         with:
-          name: index
-          path: docs/index.json
-          merge-multiple: true
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
       - run: npm run build
-        if: always()
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/
-      - uses: actions/upload-artifact@v7.0.1
+      - uses: actions/cache@v6
         with:
-          name: index
           path: docs/index.json
-          overwrite: true
+          key: ${{ hashFiles('bookmarks.html') }}
       - uses: actions/upload-artifact@v7.0.1
         with:
           name: failures
