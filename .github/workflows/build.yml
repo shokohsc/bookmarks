@@ -35,7 +35,9 @@ jobs:
         with:
           name: index
           path: docs/index.json
+          merge-multiple: true
       - run: npm run build
+        if: always()
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
