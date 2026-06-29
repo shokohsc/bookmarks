@@ -38,7 +38,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: npm ci
+      - run: npm i
       - run: npm run test:coverage
       - run: ./generate_bookmarks.sh
       - uses: actions/cache@v6
