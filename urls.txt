@@ -1,3 +1,4 @@
+https://github.com/mindsdb/anton
 https://github.com/Fission-AI/OpenSpec
 https://github.com/HKUDS/Vibe-Trading
 https://github.com/bikini/exploitarium

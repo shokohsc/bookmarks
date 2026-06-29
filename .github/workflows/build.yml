@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - urls.txt
       - bookmarks.html
       - src/**
       - build.js
@@ -38,6 +39,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
+      - run: generate_bookmarks.sh
       - uses: actions/cache@v6
         with:
           path: docs/index.json
