@@ -4,13 +4,14 @@ on:
   push:
     branches: [main]
     paths:
-      - urls.txt
-      - bookmarks.html
+      - bookmarks.txt
       - src/**
       - build.js
       - tagger.js
       - vite.config.js
       - index.html
+      - package.json
+      - package-lock.json
   workflow_dispatch:
 
 permissions:
@@ -38,13 +39,15 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - run: npm i
+      - run: npm ci
       - run: npm run test:coverage
-      - run: ./generate_bookmarks.sh
+      - run: node stars.js ${{ GITHUB_REPOSITORY_OWNER }}
+      - run: cat stars.txt bookmarks.txt > urls.txt
       - uses: actions/cache@v6
         with:
           path: docs/index.json
           key: ${{ hashFiles('urls.txt') }}
+      - run: ./generate_bookmarks.sh
       - run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
