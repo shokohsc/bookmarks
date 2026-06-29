@@ -32,10 +32,11 @@ When a URL fails to fetch (timeout, HTTP error, network error, invalid URL, etc.
 
 ## Testing
 
-- `npm test` — vitest, runs all 3 test files (52 build tests, 4 functional tests, 20 tagger tests). Functional tests start a real Vite dev server.
+- `npm test` — vitest, runs all 6 test files (53 build tests, 9 stars tests, 20 tagger tests, 4 functional tests). Functional tests start a real Vite dev server.
 - `npm run test:coverage` — covers only `build.js` and `tagger.js` (excludes built assets and src/)
 - Functional tests (`functional.test.js`) use 30s hook timeout — Vite `createServer` startup is slow
 - Unit tests mock `fs`, `node-fetch`, `cheerio`, `jsdom`, `@mozilla/readability` via `vi.mock`
+- `stars.test.js` uses dependency injection (passes mock `fetch` as parameter) to avoid global fetch stubbing issues in vitest fork pool
 
 ## Key project files
 
@@ -48,11 +49,16 @@ When a URL fails to fetch (timeout, HTTP error, network error, invalid URL, etc.
 | `index.html` | Vite entry HTML template |
 | `vite.config.js` | Vite config: port 8001, host: true, base: ./, output to docs/, custom index.json middleware |
 | `vitest.config.js` | Vitest: 30s test/hook timeout |
+| `stars.js` | CLI tool to export GitHub starred repos to stars.txt using GitHub API |
+| `stars.test.js` | 9 tests: validates CLI args, token, pagination, HTTP errors, network errors |
 
 ## CI / GitHub Pages
 
-- `.github/workflows/build.yml` triggers on pushes to `main` touching: `bookmarks.html`, `src/**`, `build.js`, `tagger.js`, `vite.config.js`, `index.html`
-- Full `npm run build` then deploy `docs/` via `actions/upload-pages-artifact` + `actions/deploy-pages`
+- `.github/workflows/build.yml` triggers on pushes to `main` touching: `bookmarks.html`, `urls.txt`, `src/**`, `build.js`, `tagger.js`, `vite.config.js`, `index.html`, `stars.js`
+- CI runs `npm run test:coverage` first, then generates a test `bookmarks.html` via `./generate_bookmarks.sh`, then runs the full `npm run build`
+- CI uses `node-version: 24` (the minimum supported is 18, but CI runs a newer version)
+- After build, artifacts are uploaded: `docs/failures.json` (90-day retention) and `coverage/` report
+- Deploy via `actions/upload-pages-artifact` + `actions/deploy-pages`
 - Repo Settings → Pages → Source must be set to **GitHub Actions**
 
 ## Security (build.js)
@@ -67,4 +73,4 @@ URL validation (`validateUrl` + `isPrivateIP`) enforces:
 
 ## Node version
 
-Node 18+. `jsdom` is pinned to v24.x for Node 18 ESM compatibility.
+Node 22+. CI runs on node-version: 24.

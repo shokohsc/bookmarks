@@ -1,5 +1,5 @@
-import { defineConfig } from "vite"
-import fs from "fs"
+import { defineConfig } from "vite";
+import fs from "fs";
 
 export default defineConfig({
   root: ".",
@@ -8,39 +8,40 @@ export default defineConfig({
     outDir: "docs",
     emptyOutDir: false,
     rollupOptions: {
-      input: "index.html"
-    }
+      input: "index.html",
+    },
   },
   server: {
     host: true,
-    // hmr: {
-    //   clientPort: 443
-    // },
-    port: 8001
+    hmr: {
+      clientPort: 443,
+    },
+    port: 8001,
+    allowedHosts: [
+      "localhost",
+      "preview.bookmarks.home.arpa",
+      "api.preview.bookmarks.home.arpa",
+    ],
   },
   plugins: [
     {
       name: "serve-data",
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url && req.url.split("?")[0] === "/index.json")
-          {
-            try
-            {
-              const data = fs.readFileSync("docs/index.json", "utf8")
-              res.setHeader("Content-Type", "application/json")
-              res.end(data)
+          if (req.url && req.url.split("?")[0] === "/index.json") {
+            try {
+              const data = fs.readFileSync("docs/index.json", "utf8");
+              res.setHeader("Content-Type", "application/json");
+              res.end(data);
+            } catch {
+              res.statusCode = 404;
+              res.end("{}");
             }
-            catch
-            {
-              res.statusCode = 404
-              res.end("{}")
-            }
-            return
+            return;
           }
-          next()
-        })
-      }
-    }
-  ]
-})
+          next();
+        });
+      },
+    },
+  ],
+});
