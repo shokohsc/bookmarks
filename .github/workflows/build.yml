@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run test:coverage
-      - run: node stars.js ${{ github.repository.owner }}
+      - run: node stars.js "${{ github.repository.owner }}"
       - run: cat stars.txt bookmarks.txt > urls.txt
       - uses: actions/cache@v6
         with:
