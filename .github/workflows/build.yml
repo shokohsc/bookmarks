@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - .github/workflows/build.yml
       - bookmarks.txt
       - src/**
       - build.js
@@ -12,11 +13,6 @@ on:
       - index.html
       - package.json
       - package-lock.json
-  workflow_call:
-    secrets:
-      STARRED_TOKEN:
-        description: "A token passed from the caller workflow"
-        required: false
   workflow_dispatch:
 
 permissions:
@@ -49,7 +45,7 @@ jobs:
       - run: node stars.js ${{ github.repository_owner }}
       - run: cat stars.txt bookmarks.txt > urls.txt
         with:
-          GITHUB_TOKEN: ${{ secrets.STARRED_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/cache@v6
         with:
           path: docs/index.json
