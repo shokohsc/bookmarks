@@ -270,8 +270,8 @@ describe("extractContent", () => {
     mockFetch.mockResolvedValue(mockSuccessResponse("<html><body><p>Hello World</p></body></html>"))
 
     const mockDocument = {}
-    mockJSDOM.mockReturnValue({
-      window: { document: mockDocument }
+    mockJSDOM.mockImplementation(function() {
+      return { window: { document: mockDocument } }
     })
     mockReadability.mockImplementation(function() {
       return { parse: () => ({ textContent: "Hello World" }) }
@@ -322,7 +322,7 @@ describe("extractContent", () => {
       return Promise.resolve(mockSuccessResponse("<html><body>Redirected</body></html>"))
     })
 
-    mockJSDOM.mockReturnValue({ window: { document: {} } })
+    mockJSDOM.mockImplementation(function() { return { window: { document: {} } } })
     mockReadability.mockImplementation(function() {
       return { parse: () => ({ textContent: "Redirected" }) }
     })
@@ -346,6 +346,28 @@ describe("extractContent", () => {
     const result = await extractContent("https://example.com")
     expect(result.content).toBe("")
     expect(result.error).toBeTruthy()
+
+    warnSpy.mockRestore()
+  })
+
+  it("limits redirect depth", async () => {
+    let callCount = 0
+    mockFetch.mockImplementation(() => {
+      callCount++
+      return Promise.resolve({
+        status: 302,
+        ok: false,
+        headers: new Map([["location", "https://example.com/redirect"]]),
+        text: () => Promise.resolve("")
+      })
+    })
+
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
+
+    const result = await extractContent("https://example.com")
+    expect(result.content).toBe("")
+    expect(result.error).toBe("Too many redirects")
+    expect(callCount).toBe(6)
 
     warnSpy.mockRestore()
   })
@@ -421,7 +443,7 @@ describe("extractContent", () => {
 
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
 
-    mockJSDOM.mockReturnValue({ window: { document: {} } })
+    mockJSDOM.mockImplementation(function() { return { window: { document: {} } } })
     mockReadability.mockImplementation(function() {
       return { parse: () => ({ textContent: "truncated" }) }
     })
@@ -473,7 +495,7 @@ describe("build", () => {
       text: () => Promise.resolve("<html><body><p>Hello</p></body></html>")
     })
 
-    mockJSDOM.mockReturnValue({ window: { document: {} } })
+    mockJSDOM.mockImplementation(function() { return { window: { document: {} } } })
     mockReadability.mockImplementation(function() {
       return { parse: () => ({ textContent: "Hello content" }) }
     })
@@ -521,7 +543,7 @@ describe("build", () => {
       headers: new Map([["content-type", "text/html; charset=utf-8"]]),
       text: () => Promise.resolve("<html><body><p>Test</p></body></html>")
     })
-    mockJSDOM.mockReturnValue({ window: { document: {} } })
+    mockJSDOM.mockImplementation(function() { return { window: { document: {} } } })
     mockReadability.mockImplementation(function() {
       return { parse: () => ({ textContent: "Test content" }) }
     })

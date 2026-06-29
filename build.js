@@ -9,15 +9,17 @@ import { generateTags } from "./tagger.js"
 const MAX_RESPONSE_SIZE = 1 * 1024 * 1024
 const REQUEST_TIMEOUT_MS = 20000
 const MAX_BOOKMARKS = 5000
+const MAX_REDIRECTS = 5
 const USER_AGENT = "bookmark-search-bot/1.0"
 const CONCURRENCY = 5
 
 function isPrivateIP(hostname)
 {
-  const parsed = hostname.toLowerCase()
+  let parsed = hostname.toLowerCase()
+  parsed = parsed.replace(/^\[|\]$/g, "")
 
   if (parsed === "localhost" || parsed === "127.0.0.1" || parsed === "0.0.0.0" ||
-      parsed === "[::1]" || parsed === "[::]" ||
+      parsed === "::1" || parsed === "::" ||
       parsed.startsWith("fc") || parsed.startsWith("fd") ||
       parsed.startsWith("fe80"))
   {
@@ -112,7 +114,7 @@ function parseBookmarks()
   return links
 }
 
-async function extractContent(url)
+async function extractContent(url, redirectDepth = 0)
 {
   const validation = validateUrl(url)
   if (!validation.valid)
@@ -140,6 +142,11 @@ async function extractContent(url)
 
     if (res.status >= 300 && res.status < 400)
     {
+      if (redirectDepth >= MAX_REDIRECTS)
+      {
+        console.warn(`[WARN] Too many redirects (${MAX_REDIRECTS}) for ${safeUrl}`)
+        return { content: "", error: "Too many redirects" }
+      }
       const location = res.headers.get("location")
       if (location)
       {
@@ -149,7 +156,7 @@ async function extractContent(url)
           console.warn(`[WARN] Redirect target blocked: ${location} - ${redirectValidation.reason}`)
           return { content: "", error: `Redirect target blocked: ${redirectValidation.reason}` }
         }
-        return extractContent(redirectValidation.url)
+        return extractContent(redirectValidation.url, redirectDepth + 1)
       }
       console.warn(`[WARN] Redirect with no Location header from ${safeUrl}`)
       return { content: "", error: "Redirect with no Location header" }

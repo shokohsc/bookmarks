@@ -26,11 +26,16 @@ const computeTagCloud = (items) => {
     .slice(0, 20)
 }
 
+const escapeHtml = (s) => {
+  if (typeof s !== "string") return ""
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+}
+
 const renderItem = (item) => `
-  <a class="result-item" href="${item.url}" target="_blank" rel="noopener">
-    <span class="result-title">${item.title}</span>
-    <span class="result-url">${item.url}</span>
-    ${item.tags ? `<span class="result-tags">${item.tags.slice(0, 5).join(", ")}</span>` : ""}
+  <a class="result-item" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
+    <span class="result-title">${escapeHtml(item.title)}</span>
+    <span class="result-url">${escapeHtml(item.url)}</span>
+    ${item.tags ? `<span class="result-tags">${item.tags.slice(0, 5).map(escapeHtml).join(", ")}</span>` : ""}
   </a>`
 
 const renderTagCloud = (tags) => {
@@ -40,7 +45,7 @@ const renderTagCloud = (tags) => {
   }
   const maxCount = tags[0][1]
   tagCloud.innerHTML = tags
-    .map(([tag, count]) => `<button class="tag" data-tag="${tag}" style="font-size:${0.75 + (count / maxCount) * 0.45}rem">${tag}</button>`)
+    .map(([tag, count]) => `<button class="tag" data-tag="${escapeHtml(tag)}" style="font-size:${0.75 + (count / maxCount) * 0.45}rem">${escapeHtml(tag)}</button>`)
     .join("")
 
   tagCloud.querySelectorAll(".tag").forEach((btn) => {

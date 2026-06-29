@@ -23,7 +23,7 @@ export default defineConfig({
       name: "serve-data",
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
-          if (req.url === "/index.json")
+          if (req.url && req.url.split("?")[0] === "/index.json")
           {
             try
             {
