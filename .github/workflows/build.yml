@@ -47,11 +47,9 @@ jobs:
       - run: npm ci
       - run: npm run test:coverage
       - run: node stars.js ${{ github.repository_owner }}
-        # with:
-        #   repository_owner: ${{ github.repository_owner }}
       - run: cat stars.txt bookmarks.txt > urls.txt
         with:
-          GITHUB_TOKEN: ${{ secrets.starred-token }}
+          GITHUB_TOKEN: ${{ secrets.STARRED_TOKEN }}
       - uses: actions/cache@v6
         with:
           path: docs/index.json
