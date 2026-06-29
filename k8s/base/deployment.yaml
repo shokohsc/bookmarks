@@ -1,0 +1,59 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: bookmarks
+spec:
+  selector:
+    matchLabels:
+      app: bookmarks
+  template:
+    metadata:
+      labels:
+        app: bookmarks
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: bookmarks
+          image: shokohsc/bookmarks
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: ENV
+              value: dev
+            - name: HOST
+              value: "0.0.0.0"
+            - name: PORT
+              value: "8001"
+          ports:
+            - name: http
+              containerPort: 8001
+              protocol: TCP
+          startupProbe:
+            tcpSocket:
+              port: http
+          livenessProbe:
+            tcpSocket:
+              port: http
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64M
+            limits:
+              cpu: 1000m
+              memory: 128M

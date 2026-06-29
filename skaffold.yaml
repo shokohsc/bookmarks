@@ -1,0 +1,92 @@
+apiVersion: skaffold/v4beta14
+kind: Config
+metadata:
+  name: bookmarks
+build:
+  artifacts:
+    - image: shokohsc/bookmarks
+      context: .
+      docker:
+        dockerfile: Dockerfile.dev
+manifests:
+  kustomize:
+    paths:
+      - k8s/overlays/shokohsc
+profiles:
+  - name: dev
+    activation:
+      - command: dev
+    build:
+      artifacts:
+        - image: shokohsc/bookmarks
+          context: .
+          sync:
+            manual:
+              - src: src/main.js
+                dest: .
+              - src: index.html
+                dest: .
+              - src: src/style.css
+                dest: .
+          docker:
+            dockerfile: Dockerfile.dev
+  - name: shokohsc
+    build:
+      artifacts:
+        - image: shokohsc/bookmarks
+          context: .
+          sync:
+            manual:
+              - src: src/main.js
+                dest: .
+              - src: index.html
+                dest: .
+              - src: src/style.css
+                dest: .
+          kaniko:
+            cache:
+              repo: shokohsc/bookmarks
+            dockerfile: Dockerfile.dev
+            useNewRun: true
+      cluster:
+        dockerConfig:
+          secretName: kaniko-secret
+        namespace: kaniko
+        pullSecretName: kaniko-secret
+        tolerations:
+          - key: "node.kubernetes.io/nuc"
+            operator: "Exists"
+            effect: "NoSchedule"
+        resources:
+          limits:
+            cpu: "2"
+            memory: 2Gi
+          requests:
+            cpu: "1"
+            memory: 1Gi
+    manifests:
+      kustomize:
+        paths:
+          - k8s/overlays/shokohsc
+  - name: prod
+    build:
+      artifacts:
+        - image: shokohsc/bookmarks
+          context: .
+          kaniko:
+            cache:
+              repo: shokohsc/bookmarks
+            dockerfile: Dockerfile
+            useNewRun: true
+      cluster:
+        dockerConfig:
+          secretName: kaniko-secret
+        namespace: kaniko
+        pullSecretName: kaniko-secret
+        resources:
+          limits:
+            cpu: "2"
+            memory: 2Gi
+          requests:
+            cpu: "1"
+            memory: 1Gi

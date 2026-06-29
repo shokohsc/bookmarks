@@ -1,0 +1,94 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: browser-sync
+  annotations:
+    configmap.reloader.stakater.com/reload: config
+spec:
+  selector:
+    matchLabels:
+      app: browser-sync
+  template:
+    metadata:
+      labels:
+        app: browser-sync
+    spec:
+      # Pod-level security context
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: browser-sync
+          image: shokohsc/browser-sync:latest
+          imagePullPolicy: Always
+          # Container-level security context
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            # readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          args:
+            - start
+            - --config
+            - /source/bs-config.js
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+            - name: ui
+              containerPort: 3001
+              protocol: TCP
+            - name: wss
+              containerPort: 443
+              protocol: TCP
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - /bin/init-browser-sync.sh
+          startupProbe:
+            tcpSocket:
+              port: http
+          livenessProbe:
+            tcpSocket:
+              port: http
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /
+          resources:
+            requests:
+              cpu: 10m
+              memory: 64M
+            limits:
+              cpu: 1000m
+              memory: 256M
+          volumeMounts:
+            - name: config
+              mountPath: /source/bs-config.js
+              subPath: bs-config.js
+            - name: config
+              mountPath: /bin/init-browser-sync.sh
+              subPath: init.sh
+      volumes:
+        - name: config
+          configMap:
+            name: config
+            defaultMode: 0755
+      tolerations:
+        - key: "node.kubernetes.io/nuc"
+          operator: "Exists"
+          effect: "NoSchedule"

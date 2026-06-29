@@ -1,0 +1,54 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: preview
+spec:
+  hostnames:
+    - preview.bookmarks.home.arpa
+    - api.preview.bookmarks.home.arpa
+  parentRefs:
+    - name: cilium
+      namespace: cilium
+  rules:
+    - backendRefs:
+        - name: browser-sync
+          port: 3000
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+    - backendRefs:
+        - name: browser-sync
+          port: 443
+      matches:
+        - path:
+            type: PathPrefix
+            value: /browser-sync/socket.io
+
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: browser-sync
+spec:
+  hostnames:
+    - browser-sync.bookmarks.home.arpa
+  parentRefs:
+    - name: cilium
+      namespace: cilium
+  rules:
+    - backendRefs:
+        - name: browser-sync
+          port: 3001
+      matches:
+        - path:
+            type: PathPrefix
+            value: /
+    - backendRefs:
+        - name: browser-sync
+          port: 443
+      matches:
+        - path:
+            type: PathPrefix
+            value: /browser-sync

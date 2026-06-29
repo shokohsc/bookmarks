@@ -1,0 +1,70 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: bookmarks
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: bookmarks
+          image: shokohsc/bookmarks
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            # readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          args:
+            - npm
+            - run
+            - dev
+          ports:
+            - name: http
+              containerPort: 8001
+              protocol: TCP
+          env:
+            - name: ENV
+              value: development
+            - name: HOST
+              value: "0.0.0.0"
+            - name: PORT
+              value: "8001"
+            - name: NODE_OPTIONS
+              value: "--trace-warnings"
+          volumeMounts:
+            - name: dist
+              mountPath: /app/docs
+            - name: vite-tmp
+              mountPath: /app/node_modules/.vite-temp
+            - name: vite
+              mountPath: /app/node_modules/.vite
+          resources:
+            limits:
+              memory: 1024M
+      volumes:
+        - name: dist
+          emptyDir:
+            medium: Memory
+        - name: vite
+          emptyDir:
+            medium: Memory
+        - name: vite-tmp
+          emptyDir:
+            medium: Memory
+      tolerations:
+        - key: "node.kubernetes.io/nuc"
+          operator: "Exists"
+          effect: "NoSchedule"
