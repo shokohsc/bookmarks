@@ -12,6 +12,11 @@ on:
       - index.html
       - package.json
       - package-lock.json
+  workflow_call:
+    secrets:
+      STARRED_TOKEN:
+        description: "A token passed from the caller workflow"
+        required: false
   workflow_dispatch:
 
 permissions:
@@ -45,6 +50,8 @@ jobs:
         # with:
         #   repository_owner: ${{ github.repository_owner }}
       - run: cat stars.txt bookmarks.txt > urls.txt
+        with:
+          GITHUB_TOKEN: ${{ secrets.starred-token }}
       - uses: actions/cache@v6
         with:
           path: docs/index.json
