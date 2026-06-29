@@ -39,6 +39,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
+      - run: npm test:coverage
       - run: ./generate_bookmarks.sh
       - uses: actions/cache@v6
         with:
@@ -53,6 +54,12 @@ jobs:
         with:
           name: failures
           path: docs/failures.json
+          retention-days: 90
+          overwrite: true
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: coverage
+          path: coverage/
           retention-days: 90
           overwrite: true
 
