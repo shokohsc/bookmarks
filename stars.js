@@ -6,9 +6,9 @@ async function getStars(username, fetchFn = globalThis.fetch) {
     throw new Error("Usage: node stars.js <github-username>");
   }
 
-  const token = process.env.GITHUB_TOKEN;
+  const token = process.env.GH_TOKEN;
   if (!token) {
-    throw new Error("Please set GITHUB_TOKEN.");
+    throw new Error("Please set GH_TOKEN.");
   }
 
   let page = 1;
@@ -47,10 +47,10 @@ async function getStars(username, fetchFn = globalThis.fetch) {
 export { getStars };
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const username = process.argv[2]
+  const username = process.argv[2];
   if (!username) {
-    console.error("Usage: node stars.js <github-username>")
-    process.exit(1)
+    console.error("Usage: node stars.js <github-username>");
+    process.exit(1);
   }
-  getStars(username).catch(console.error)
+  getStars(username).catch(console.error);
 }
