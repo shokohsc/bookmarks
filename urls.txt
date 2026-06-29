@@ -1,9 +1,12 @@
+https://github.com/allen-110/exploitarium
+https://github.com/0xNyk/council-of-high-intelligence
+https://github.com/logto-io/logto
+https://github.com/NousResearch/hermes-agent-self-evolution
 https://github.com/ogulcancelik/herdr
 https://github.com/rcarmo/pve-microvm
 https://github.com/mindsdb/anton
 https://github.com/Fission-AI/OpenSpec
 https://github.com/HKUDS/Vibe-Trading
-https://github.com/bikini/exploitarium
 https://github.com/kunchenguid/no-mistakes
 https://github.com/commaai/openpilot
 https://github.com/Light-Heart-Labs/DreamServer
