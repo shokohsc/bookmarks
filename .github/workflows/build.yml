@@ -123,8 +123,7 @@ jobs:
           overwrite: true
 
   deploy:
-    needs: [build, build-llm]
-    if: always() && (needs.build.result == 'success' || needs.build-llm.result == 'success')
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
