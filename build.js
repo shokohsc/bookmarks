@@ -4,7 +4,7 @@ import { JSDOM } from "jsdom"
 import { Readability } from "@mozilla/readability"
 import * as cheerio from "cheerio"
 
-import { generateTags } from "./tagger.js"
+import { generateTags as basicGenerateTags } from "./tagger.js"
 
 const MAX_RESPONSE_SIZE = 1 * 1024 * 1024
 const REQUEST_TIMEOUT_MS = 20000
@@ -277,7 +277,11 @@ async function build()
         failures.push({ url: b.url, title: b.title, error })
       }
 
-      const ai = generateTags(content)
+      const tagger = process.env.LLM_TAGGING === "true"
+        ? (await import("./llm-tagger.js")).generateTagsLLM
+        : async (content) => basicGenerateTags(content)
+
+      const ai = await tagger(content, b.title, b.url)
       seen.add(b.url)
 
       return {
