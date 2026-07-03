@@ -9,6 +9,7 @@ on:
       - src/**
       - build.js
       - tagger.js
+      - llm-tagger.js
       - vite.config.js
       - index.html
       - package.json
@@ -25,7 +26,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.0
@@ -34,7 +35,7 @@ jobs:
           node-version: 24
           cache: npm
       - uses: actions/cache@v6
-        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        id: npm-cache
         with:
           path: node_modules/
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -42,6 +43,30 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm ci
       - run: npm run test:coverage
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 90
+          overwrite: true
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.0
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/cache@v6
+        id: npm-cache
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
       - run: node stars.js ${{ github.repository_owner }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,21 +81,50 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: docs/
+
+  build-llm:
+    needs: test
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@v7.0.0
+      - uses: actions/setup-node@v6.4.0
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/cache@v6
+        id: npm-cache
+        with:
+          path: node_modules/
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm ci
+      - run: node stars.js ${{ github.repository_owner }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: cat stars.txt bookmarks.txt > urls.txt
+      - uses: actions/cache@v6
+        with:
+          path: docs/index.json
+          key: ${{ hashFiles('urls.txt') }}
+      - run: ./generate_bookmarks.sh
+      - run: npm run build
+        env:
+          LLM_TAGGING: true
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: docs/
       - uses: actions/upload-artifact@v7.0.1
         with:
           name: failures
           path: docs/failures.json
           retention-days: 90
           overwrite: true
-      - uses: actions/upload-artifact@v7.0.1
-        with:
-          name: coverage
-          path: coverage/
-          retention-days: 90
-          overwrite: true
 
   deploy:
-    needs: build
+    needs: [build, build-llm]
+    if: always()
     runs-on: ubuntu-latest
     environment:
       name: github-pages
