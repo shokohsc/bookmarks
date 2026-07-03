@@ -61,7 +61,6 @@ describe("generateTagsLLM", () => {
   })
 
   it("falls back to basic tagging on timeout", async () => {
-    const controller = new AbortController()
     const abortError = new Error("The operation was aborted")
     abortError.name = "AbortError"
     mockFetch.mockRejectedValue(abortError)

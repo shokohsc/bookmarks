@@ -124,7 +124,7 @@ jobs:
 
   deploy:
     needs: [build, build-llm]
-    if: always()
+    if: always() && (needs.build.result == 'success' || needs.build-llm.result == 'success')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
