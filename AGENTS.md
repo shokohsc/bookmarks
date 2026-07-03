@@ -74,3 +74,25 @@ URL validation (`validateUrl` + `isPrivateIP`) enforces:
 ## Node version
 
 Node 22+. CI runs on node-version: 24.
+
+## LLM Tagging
+
+`llm-tagger.js` provides optional LLM-based tagging via Ollama when the `LLM_TAGGING=true` environment variable is set.
+
+### Environment variables
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `LLM_TAGGING` | *(unset)* | Set to `true` to enable LLM tagging |
+| `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama server endpoint |
+| `OLLAMA_MODEL` | `gemma4` | Model for tag generation |
+
+### Fallback
+
+On any failure (network error, timeout, invalid response), `llm-tagger.js` silently falls back to the basic frequency-based tagger from `tagger.js`.
+
+### CI split
+
+- GitHub-hosted runner (`ubuntu-latest`): basic tagging only (no Ollama access)
+- Self-hosted runner (`[self-hosted, linux]`): LLM tagging via Ollama service in homelab
+- Both upload Pages artifacts; the LLM build takes priority when available
