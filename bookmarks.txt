@@ -1439,6 +1439,7 @@ https://www.rockpapershotgun.com/best-diablo-immortal-monk-build
 https://www.rockpapershotgun.com/best-diablo-immortal-necromancer-build
 https://www.rockpapershotgun.com/diablo-immortal-legendary-set-gear
 https://www.rockpapershotgun.com/elden-ring-walkthrough
+https://www.roosmaa.net/blog/
 https://www.scality.com/solved/5-free-tools-to-navigate-through-docker-containers-security/
 https://www.seedr.cc/files
 https://www.sept-lieues.com/Jobs/Search?SalaryMin=75&Tags=kubernetes&NotMarker=2
@@ -1513,4 +1514,3 @@ https://youtu.be/q6r28USXsHE
 https://zackorndorff.com/2015/03/10/disposable-email-addresses-with-postfix/
 https://zipkin.io/
 https://zoriya.dev/blogs/transcoder/#the-goal
-null
