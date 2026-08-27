@@ -1,3 +1,4 @@
+https://davidguerrero.fr/blog/tiniest-logging-stack/
 https://gateway-api.sigs.k8s.io/reference/api-types/listenerset/
 https://supabase.com/docs/guides/platform/migrating-to-supabase/postgres
 https://www.playstratus.io/blogs/architecture/
