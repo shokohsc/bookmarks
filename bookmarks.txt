@@ -1,3 +1,14 @@
+https://cloudnative-pg.io/docs/1.30/samples
+https://www.filipnet.de/zfs-replace-faulted-disk/
+https://github.com/toAlice/NvidiaTeslaP40forGaming/tree/main
+https://github.com/Faltland/p40-Homelab/tree/main/riser-topology
+https://doofer.org/2025/01/15/nvidia-vgpu-with-proxmox/
+https://gist.github.com/sovajri7/fb594c49fa97f00216786f190933b39a
+https://gitlab.com/polloloco/vgpu-proxmox
+https://fabien-millet.fr/2026/05/30/vgpu-nvidia-proxmox/
+https://www.tomshardware.com/how-to/disable-vbs-windows-11
+https://docs.siderolabs.com/talos/v1.13/configure-your-talos-cluster/lifecycle-management/upgrading-talos
+https://docs.siderolabs.com/kubernetes-guides/advanced-guides/upgrading-kubernetes
 https://galaxium.app/
 https://www.autodidacts.io/how-to-fit-qwen3-8-27b-into-16gb-vram-run-with-llama-cpp-rtx-3080-flags-quantizations/
 https://davidguerrero.fr/blog/tiniest-logging-stack/
