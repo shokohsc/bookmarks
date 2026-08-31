@@ -1,3 +1,4 @@
+https://sumguy.com/promtail-to-alloy-migration/
 https://cloudnative-pg.io/docs/1.30/samples
 https://www.filipnet.de/zfs-replace-faulted-disk/
 https://github.com/toAlice/NvidiaTeslaP40forGaming/tree/main
