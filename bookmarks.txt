@@ -1,3 +1,6 @@
+https://dasroot.net/posts/2026/01/use-docker-hardened-images-dhi-kubernetes-deployments/
+https://dev.to/docker/docker-hardened-images-are-free-3cj1
+https://lipanski.com/posts/smallest-docker-image-static-website
 https://www.browserless.io/blog/how-to-bypass-cloudflare-scraping
 https://punktfunk.unom.io/en/
 https://sumguy.com/promtail-to-alloy-migration/
