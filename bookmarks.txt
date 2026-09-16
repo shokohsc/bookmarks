@@ -1,3 +1,4 @@
+https://fhoekstra.eu/posts/howto-cloudnative-ferretdb-with-automated-recovery-from-continuous-backups/#step-1-ferretdb-backed-by-cloudnative-pg
 https://dasroot.net/posts/2026/01/use-docker-hardened-images-dhi-kubernetes-deployments/
 https://dev.to/docker/docker-hardened-images-are-free-3cj1
 https://lipanski.com/posts/smallest-docker-image-static-website
