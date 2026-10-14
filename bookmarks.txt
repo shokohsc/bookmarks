@@ -1,3 +1,4 @@
+https://git.nerdworks.io/nerdworks/nosterm-client
 https://technonagib.fr/activer-nvidia-vgpu-gpu-grand-public-proxmox-ve/
 https://tansei.io/blog/small-language-model-like-mythos
 https://www.linuxserver.io/blog/webtop-5-0-and-selkies-2-0-everything-everywhere-all-in-one-release
