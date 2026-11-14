@@ -1,3 +1,4 @@
+https://docs.nordbye.it/architecture/diagrams/
 https://longshot.magicbean.dev/
 https://free-git.org/NotRexed/Hookshot
 https://git.eden-emu.dev/eden-emu/eden
